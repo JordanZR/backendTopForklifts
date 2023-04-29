@@ -23,4 +23,4 @@ module.exports = app
 
 //Routes
 
-//require('../src/routes/emailRoute')
+require('../src/routes/userRoute')
