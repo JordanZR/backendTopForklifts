@@ -24,3 +24,4 @@ module.exports = app
 //Routes
 
 require('../src/routes/userRoute')
+require('../src/routes/clienteRoute')
