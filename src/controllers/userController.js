@@ -11,8 +11,8 @@ usuarioCtrl.getUsuarios = (req, res)=>{
     })
 }
 
-usuarioCtrl.postUsuarios = (req, res)=>{
-    query = "INSERT INTO usuario(nombre, apellido, correo, password_, tipo) VALUES('" + req.body.nombre +  "','" + req.body.apellido + "')"
+usuarioCtrl.postUsuario = (req, res)=>{
+    query = "INSERT INTO usuario(nombre, apellido, correo, password_, tipo) VALUES('" + req.body.nombre +  "','" + req.body.apellido + "','" + req.body.correo + "','" + req.body.password_ + "','" + req.body.tipo + "')"
     connection.query(query, function (err, result) {
         if (err) console.log(err)
         query = "SELECT * from usuario"
@@ -23,8 +23,8 @@ usuarioCtrl.postUsuarios = (req, res)=>{
     })
 }
 
-usuarioCtrl.updateUsuarios = (req,res)=>{
-    query = "UPDATE usuario SET name = '" + req.body.name + "',surname = '" + req.body.surname + "' WHERE id = " + req.body.id
+usuarioCtrl.updateUsuario = (req,res)=>{
+    query = "UPDATE usuario SET correo = '" + req.body.correo + "',password_ = '" + req.body.password_ + "' WHERE id = " + req.body.id
     connection.query(query, function (err, result) {
         if (err) console.log(err)
         query = "SELECT * from usuario"
@@ -35,7 +35,7 @@ usuarioCtrl.updateUsuarios = (req,res)=>{
     })
 }
 
-usuarioCtrl.deleteUsuarios = (req,res)=>{
+usuarioCtrl.deleteUsuario = (req,res)=>{
     query = "DELETE FROM usuario WHERE id = " + req.body.id
     connection.query(query, function (err, result) {
         if (err) console.log(err);
@@ -46,4 +46,5 @@ usuarioCtrl.deleteUsuarios = (req,res)=>{
         })
     })
 }
+
 module.exports = usuarioCtrl
