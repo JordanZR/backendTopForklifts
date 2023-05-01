@@ -25,3 +25,4 @@ module.exports = app
 
 require('../src/routes/userRoute')
 require('../src/routes/clienteRoute')
+require('../src/routes/inventarioRoute')

@@ -1,0 +1,57 @@
+const connection = require('../db')
+const inventarioCtrl = {}
+
+var query
+
+inventarioCtrl.getInventarios = (req, res)=>{
+    query = "SELECT * from inventario"
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        res.json(result)
+    })
+}
+
+inventarioCtrl.postInventario = (req, res)=>{
+    query = "INSERT INTO inventario(nombre, cantidad, precio, modelo) VALUES('" + req.body.nombre +  "'," + req.body.cantidad + "," + req.body.precio + ",'" + req.body.modelo + "')"
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        query = "SELECT * from inventario"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+inventarioCtrl.updateInventario = (req,res)=>{
+    //This is to make a distinction for the data type, as 'nombre' and 'modelo' are varchar so
+    //we need to add the '' to the query
+    if(req.body.opcion == "nombre" || req.body.opcion == "modelo"){
+        query = "UPDATE inventario SET " + req.body.opcion +  " = '" + req.body.dato + "' WHERE id = " + req.body.id
+    }else{
+        query = "UPDATE inventario SET " + req.body.opcion +  " = " + req.body.dato + " WHERE id = " + req.body.id
+    }
+    console.log(query)
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        query = "SELECT * from inventario"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+inventarioCtrl.deleteInventario = (req,res)=>{
+    query = "DELETE FROM inventario WHERE id = " + req.body.id
+    connection.query(query, function (err, result) {
+        if (err) console.log(err);
+        query = "SELECT * from inventario"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+module.exports = inventarioCtrl

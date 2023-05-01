@@ -20,12 +20,14 @@ empresa varchar(30)
 
 CREATE TABLE cotizacion(
 id int primary key AUTO_INCREMENT,
+idCliente int,
 nombreCliente varchar(15),
 apellidoCliente varchar(15),
 empresaCliente varchar(30),
 correoCliene varchar(30),
 telefonoCliente varchar(30),
-contenido text(140)
+contenido text(140),
+FOREIGN KEY(idCliente) REFERENCES cliente(id)
 )
 
 CREATE TABLE boleta(
@@ -45,7 +47,7 @@ id int primary key AUTO_INCREMENT,
 nombre varchar(30),
 cantidad int(10),
 modelo varchar(20),
-precio decimal(10)
+precio double
 )
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';

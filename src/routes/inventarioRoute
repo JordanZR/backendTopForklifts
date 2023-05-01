@@ -1,0 +1,8 @@
+var app = require('../index')
+
+const inventarioCtrl = require('../controllers/inventarioController')
+
+app.get('/inventario', inventarioCtrl.getInventarios)
+app.put('/inventario', inventarioCtrl.updateInventario)
+app.post('/inventario', inventarioCtrl.postInventario)
+app.delete('/inventario', inventarioCtrl.deleteInventario)
