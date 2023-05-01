@@ -1,0 +1,38 @@
+const connection = require('../db')
+const cotizacionCtrl = {}
+
+var query
+
+cotizacionCtrl.getCotizaciones = (req, res)=>{
+    query = "SELECT * from cotizacion"
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        res.json(result)
+    })
+}
+
+cotizacionCtrl.postCotizacion = (req, res)=>{
+    query = "INSERT INTO cotizacion(nombreCliente, apellidoCliente, correoCliente, telefonoCliente, empresaCliente, contenido, idCliente) VALUES('" + req.body.nombreCliente +  "','" + req.body.apellidoCliente + "','" + req.body.correoCliente + "','" + req.body.telefonoCliente + "','" + req.body.empresaCliente +"','" + req.body.contenido + "',"+req.body.idCliente+")"
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        query = "SELECT * from cotizacion"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+cotizacionCtrl.deleteCotizacion = (req,res)=>{
+    query = "DELETE FROM cotizacion WHERE id = " + req.body.id
+    connection.query(query, function (err, result) {
+        if (err) console.log(err);
+        query = "SELECT * from cotizacion"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+module.exports = cotizacionCtrl

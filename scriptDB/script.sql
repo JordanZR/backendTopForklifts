@@ -24,11 +24,12 @@ idCliente int,
 nombreCliente varchar(15),
 apellidoCliente varchar(15),
 empresaCliente varchar(30),
-correoCliene varchar(30),
+correoCliente varchar(30),
 telefonoCliente varchar(30),
 contenido text(140),
 FOREIGN KEY(idCliente) REFERENCES cliente(id)
 )
+
 
 CREATE TABLE boleta(
 id int primary key AUTO_INCREMENT,

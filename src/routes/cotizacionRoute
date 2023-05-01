@@ -1,0 +1,7 @@
+var app = require('../index')
+
+const cotizacionCtrl = require('../controllers/cotizacionController')
+
+app.get('/cotizacion', cotizacionCtrl.getCotizaciones)
+app.post('/cotizacion', cotizacionCtrl.postCotizacion)
+app.delete('/cotizacion', cotizacionCtrl.deleteCotizacion)
