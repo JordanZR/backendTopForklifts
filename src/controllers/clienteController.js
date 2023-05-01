@@ -11,6 +11,14 @@ clienteCtrl.getClientes = (req, res)=>{
     })
 }
 
+clienteCtrl.getCliente = (req, res)=>{
+    query = "SELECT * from cliente WHERE id = " + req.body.id
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        res.json(result)
+    })
+}
+
 clienteCtrl.postCliente = (req, res)=>{
     query = "INSERT INTO cliente(nombre, apellido, correo, telefono, empresa) VALUES('" + req.body.nombre +  "','" + req.body.apellido + "','" + req.body.correo + "','" + req.body.telefono + "','" + req.body.empresa + "')"
     connection.query(query, function (err, result) {
