@@ -34,12 +34,12 @@ FOREIGN KEY(idCliente) REFERENCES cliente(id)
 CREATE TABLE boleta(
 id int primary key AUTO_INCREMENT,
 idEmpleado int,
-salario decimal(10),
-afp decimal(10),
-renta decimal(10),
-isss decimal(10),
-descuentos decimal(10),
-totalNeto decimal(10),
+salario double,
+afp double,
+renta double,
+isss double,
+descuentos double,
+totalNeto double,
 FOREIGN KEY (idEmpleado) REFERENCES usuario(id)
 )
 
