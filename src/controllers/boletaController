@@ -1,0 +1,62 @@
+const connection = require('../db')
+const boletaController = {}
+
+var query
+
+boletaController.getBoletas = (req, res)=>{
+    query = "SELECT * from boleta"
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        res.json(result)
+    })
+}
+
+
+boletaController.getBoleta = (req, res)=>{
+    query = "SELECT * from boleta WHERE id = " + req.body.id
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        res.json(result)
+    })
+}
+
+boletaController.postBoleta = (req, res)=>{
+    query = "INSERT INTO boleta(idEmpleado, salario, afp, renta, isss, descuentos, totalNeto) VALUES(" + req.body.idEmpleado +  "," + req.body.salario + "," + req.body.afp + "," + req.body.renta + "," + req.body.isss + "," + req.body.descuentos + "," + req.body.totalNeto + ")"
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        query = "SELECT * from boleta"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+boletaController.updateBoleta = (req,res)=>{
+    
+    query = "UPDATE boleta SET salario = " + req.body.salario + ", afp = " + req.body.afp + ", renta = "+req.body.renta+", isss ="+req.body.isss+", descuentos ="+req.body.descuentos+", totalNeto = "+req.body.totalNeto+" WHERE id = " + req.body.id
+
+    console.log(query)
+    connection.query(query, function (err, result) {
+        if (err) console.log(err)
+        query = "SELECT * from boleta"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+boletaController.deleteBoleta = (req,res)=>{
+    query = "DELETE FROM boleta WHERE id = " + req.body.id
+    connection.query(query, function (err, result) {
+        if (err) console.log(err);
+        query = "SELECT * from boleta"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
+module.exports = boletaController
