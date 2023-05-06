@@ -12,7 +12,7 @@ clienteCtrl.getClientes = (req, res)=>{
 }
 
 clienteCtrl.getCliente = (req, res)=>{
-    query = "SELECT * from cliente WHERE id = " + req.body.id
+    query = "SELECT * from cliente WHERE correo = '" + req.body.correo + "'"
     connection.query(query, function (err, result) {
         if (err) console.log(err)
         res.json(result)

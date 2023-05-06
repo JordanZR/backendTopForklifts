@@ -32,7 +32,7 @@ usuarioCtrl.postUsuario = (req, res)=>{
 }
 
 usuarioCtrl.updateUsuario = (req,res)=>{
-    query = "UPDATE usuario SET correo = '" + req.body.correo + "',password_ = '" + req.body.password_ + "' WHERE id = " + req.body.id
+    query = "UPDATE usuario SET correo = '" + req.body.correo + "', password_ = '" + req.body.password_ + "' WHERE id = " + req.body.id
     connection.query(query, function (err, result) {
         if (err) console.log(err)
         query = "SELECT * from usuario"
