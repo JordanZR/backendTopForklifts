@@ -1,5 +1,7 @@
 CREATE DATABASE topForkLifts
 use topForkLifts
+
+
 CREATE TABLE usuario(
 id int primary key AUTO_INCREMENT,
 nombre varchar(15),
@@ -13,20 +15,22 @@ CREATE TABLE cliente(
 id int primary key AUTO_INCREMENT,
 nombre varchar(15),
 apellido varchar(15),
-correo varchar(30),
+correo varchar(60),
 telefono varchar(15),
-empresa varchar(30)
+empresa varchar(45)
 )
+
 
 CREATE TABLE cotizacion(
 id int primary key AUTO_INCREMENT,
 idCliente int,
 nombreCliente varchar(15),
 apellidoCliente varchar(15),
-empresaCliente varchar(30),
-correoCliente varchar(30),
+empresaCliente varchar(45),
+correoCliente varchar(60),
 telefonoCliente varchar(30),
 contenido text(140),
+status_ varchar(15) default'pendiente',
 FOREIGN KEY(idCliente) REFERENCES cliente(id)
 )
 

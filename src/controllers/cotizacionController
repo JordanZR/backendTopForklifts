@@ -35,4 +35,16 @@ cotizacionCtrl.deleteCotizacion = (req,res)=>{
     })
 }
 
+cotizacionCtrl.updateCotizacion = (req,res)=>{
+    query = "UPDATE cotizacion SET status_ ='" + req.body.status_ + "' WHERE id = " + req.body.id
+    connection.query(query, function (err, result) {
+        if (err) console.log(err);
+        query = "SELECT * from cotizacion"
+        connection.query(query, function (err, result) {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+}
+
 module.exports = cotizacionCtrl
