@@ -10,6 +10,8 @@ password_ varchar(20),
 tipo varchar(15)
 )
 
+SELECT * from usuario
+
 CREATE TABLE cliente(
 id int primary key AUTO_INCREMENT,
 nombre varchar(15),
@@ -51,10 +53,15 @@ id int primary key AUTO_INCREMENT,
 nombre varchar(30),
 cantidad int(10),
 modelo varchar(20),
-precio double
+precio double,
+trabajador_modificacion_id INT,
+fecha_modificacion varchar(20),
+FOREIGN KEY(trabajador_modificacion_id) REFERENCES usuario(id)
 )
-ALTER TABLE inventario ADD trabajador_cambio_id INT FOREIGN KEY trabajador_cambio_id REFERENCES usuario(id)
 
+SELECT * from inventario
+
+DELETE from inventario
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
 flush privileges
