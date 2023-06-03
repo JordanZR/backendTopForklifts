@@ -26,7 +26,7 @@ inventarioCtrl.postInventario = (req, res)=>{
 inventarioCtrl.updateInventario = (req,res)=>{
     
 
-    query = "UPDATE inventario SET nombre = '" + req.body.nombre +  "', modelo = '" + req.body.modelo + "', precio = " + req.body.precio + ", cantidad = " + req.body.cantidad + ", fecha = '" +req.body.fecha +"', trabajador_modificacion_id = " + req.body.trabajador_modificacion_id+ " WHERE id = " + req.body.id
+    query = "UPDATE inventario SET nombre = '" + req.body.nombre +  "', modelo = '" + req.body.modelo + "', precio = " + req.body.precio + ", cantidad = " + req.body.cantidad + ", fecha_modificacion = '" +req.body.fecha +"', trabajador_modificacion_id = " + req.body.trabajador_modificacion_id+ " WHERE id = " + req.body.id
     
     console.log(query)
     connection.query(query, function (err, result) {
