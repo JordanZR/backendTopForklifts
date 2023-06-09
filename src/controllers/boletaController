@@ -21,7 +21,7 @@ boletaController.getBoleta = (req, res)=>{
 }
 
 boletaController.postBoleta = (req, res)=>{
-    query = "INSERT INTO boleta(idEmpleado, salario, afp, renta, isss, descuentos, totalNeto) VALUES(" + req.body.idEmpleado +  "," + req.body.salario + "," + req.body.afp + "," + req.body.renta + "," + req.body.isss + "," + req.body.descuentos + "," + req.body.totalNeto + ")"
+    query = "INSERT INTO boleta(idEmpleado, salario, afp, renta, isss, descuentos, totalNeto, quincena, mes) VALUES(" + req.body.idEmpleado +  "," + req.body.salario + "," + req.body.afp + "," + req.body.renta + "," + req.body.isss + "," + req.body.descuentos + "," + req.body.totalNeto + ",'" + req.body.quincena + "','" + req.body.mes + "')"
     connection.query(query, function (err, result) {
         if (err) console.log(err)
         query = "SELECT * from boleta"

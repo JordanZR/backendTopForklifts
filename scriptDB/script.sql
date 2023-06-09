@@ -45,8 +45,12 @@ renta double,
 isss double,
 descuentos double,
 totalNeto double,
+quincena int,
+mes varchar (20),
 FOREIGN KEY (idEmpleado) REFERENCES usuario(id)
 )
+
+DROP TABLE boleta
 
 CREATE TABLE inventario(
 id int primary key AUTO_INCREMENT,
@@ -59,9 +63,11 @@ fecha_modificacion varchar(20),
 FOREIGN KEY(trabajador_modificacion_id) REFERENCES usuario(id)
 )
 
-SELECT * from inventario
+SELECT * from boleta
 
-DELETE from inventario
+DELETE from boleta WHERE id = 2
+
+DELETE from inventario where id = 1
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
 flush privileges
