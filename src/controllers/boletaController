@@ -13,7 +13,7 @@ boletaController.getBoletas = (req, res)=>{
 
 
 boletaController.getBoleta = (req, res)=>{
-    query = "SELECT * from boleta WHERE id = " + req.body.id
+    query = "SELECT * from boleta WHERE mes = '" + req.params.mes + "' AND quincena = '" + req.params.quincena + "'"
     connection.query(query, function (err, result) {
         if (err) console.log(err)
         res.json(result)

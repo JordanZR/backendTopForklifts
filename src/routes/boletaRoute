@@ -3,7 +3,7 @@ var app = require('../index')
 const boletaCtrl = require('../controllers/boletaController')
 
 app.get('/boletas', boletaCtrl.getBoletas)
-app.get('/boleta', boletaCtrl.getBoleta)
+app.get('/boleta/:mes/:quincena', boletaCtrl.getBoleta)
 app.put('/boleta', boletaCtrl.updateBoleta)
 app.post('/boleta', boletaCtrl.postBoleta)
 app.delete('/boleta', boletaCtrl.deleteBoleta)

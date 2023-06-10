@@ -50,6 +50,7 @@ mes varchar (20),
 FOREIGN KEY (idEmpleado) REFERENCES usuario(id)
 )
 
+select * from boleta
 DROP TABLE boleta
 
 CREATE TABLE inventario(
