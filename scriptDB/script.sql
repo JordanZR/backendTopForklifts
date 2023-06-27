@@ -10,8 +10,6 @@ password_ varchar(20),
 tipo varchar(15)
 )
 
-SELECT * from usuario
-
 CREATE TABLE cliente(
 id int primary key AUTO_INCREMENT,
 nombre varchar(15),
@@ -50,8 +48,6 @@ mes varchar (20),
 FOREIGN KEY (idEmpleado) REFERENCES usuario(id)
 )
 
-select * from boleta
-DROP TABLE boleta
 
 CREATE TABLE inventario(
 id int primary key AUTO_INCREMENT,
@@ -64,11 +60,6 @@ fecha_modificacion varchar(20),
 FOREIGN KEY(trabajador_modificacion_id) REFERENCES usuario(id)
 )
 
-SELECT * from boleta
-
-DELETE from boleta WHERE id = 2
-
-DELETE from inventario where id = 1
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
 flush privileges
